@@ -163,6 +163,10 @@ input[type="button"]{
     box-shadow: 0px 0px 6px #ddd;
 }
 
+#search_field {
+    text-align: center;
+}
+
 .lateral input[type="text"],
 .lateral input[type="text"],
 .lateral textarea,
