@@ -120,6 +120,7 @@ button,
 input[type="submit"],
 input[type="button"]{
     width: 100px;
+    margin-right: 10px;
     background: #0b70e1;
     color: white;
     border: 0;
