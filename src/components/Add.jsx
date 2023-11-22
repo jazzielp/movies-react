@@ -1,3 +1,4 @@
+import { saveToStorage } from "../helpers/SaveToStorage"
 function Add() {
 
     const getDataForm = (e) => {
@@ -12,13 +13,7 @@ function Add() {
             title,
             description
         }
-        saveToStorage(movie)
-    }
-
-    const saveToStorage = (movie) => {
-        const movies = JSON.parse(localStorage.getItem('movies')) || []
-        movies.push(movie)
-        localStorage.setItem('movies', JSON.stringify(movies))
+        saveToStorage('movies', movie)
     }
 
     return (
