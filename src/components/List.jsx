@@ -1,21 +1,8 @@
-import { useEffect, useState } from "react"
-
-function List() {
-    const [movies, setMovies] = useState([])
-
-    useEffect(() => {
-        const moviesStorage = getMovies()
-        setMovies(moviesStorage)
-    }, [])
-
-    const getMovies = () => {
-        const movies = JSON.parse(localStorage.getItem('movies')) || []
-        return movies
-    }
+import PropTypes from 'prop-types'
+function List({ movies }) {
 
     return (
         <>
-            {/* aqui van las peliculas */}
             {
                 movies.length === 0
                     ? <p>No hay peliculas</p>
@@ -31,6 +18,10 @@ function List() {
             }
         </>
     )
+}
+
+List.propTypes = {
+    movies: PropTypes.array.isRequired
 }
 
 export default List

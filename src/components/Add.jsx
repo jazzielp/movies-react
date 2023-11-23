@@ -1,5 +1,6 @@
-import { saveToStorage } from "../helpers/SaveToStorage"
-function Add() {
+import { saveToStorage, getFromStorage } from "../helpers/SaveToStorage"
+import propTypes from 'prop-types'
+function Add({ setMovies }) {
 
     const getDataForm = (e) => {
         e.preventDefault()
@@ -14,6 +15,7 @@ function Add() {
             description
         }
         saveToStorage('movies', movie)
+        setMovies(getFromStorage('movies'))
     }
 
     return (
@@ -28,6 +30,10 @@ function Add() {
         </div>
 
     )
+}
+
+Add.propTypes = {
+    setMovies: propTypes.func.isRequired
 }
 
 export default Add

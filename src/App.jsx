@@ -1,10 +1,17 @@
 import '../public/css/styles.css'
+import { useState, useEffect } from 'react'
 import List from './components/List'
 import Searcher from './components/Searcher'
+import { getFromStorage } from './helpers/SaveToStorage'
 import Add from './components/Add'
 
 function App() {
+    const [movies, setMovies] = useState([])
 
+    useEffect(() => {
+        const moviesStorage = getFromStorage('movies')
+        setMovies(moviesStorage)
+    }, [])
     return (
         <>
             <div className="layout">
@@ -30,14 +37,14 @@ function App() {
                 {/* Contenido principal */}
                 <section id="content" className="content">
 
-                    <List />
+                    <List movies={movies} />
 
                 </section>
 
                 {/* Barra lateral */}
                 <aside className="lateral">
                     <Searcher />
-                    <Add />
+                    <Add setMovies={setMovies}/>
                 </aside>
 
                 {/* Pie de página */}

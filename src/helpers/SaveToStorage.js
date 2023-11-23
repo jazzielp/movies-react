@@ -3,3 +3,7 @@ export const saveToStorage = (key, item) => {
     movies.push(item)
     localStorage.setItem(key, JSON.stringify(movies))
 }
+
+export const getFromStorage = (key) => {
+    return JSON.parse(localStorage.getItem(key)) || []
+}
