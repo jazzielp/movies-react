@@ -37,7 +37,7 @@ function App() {
                 {/* Contenido principal */}
                 <section id="content" className="content">
 
-                    <List movies={movies} />
+                    <List movies={movies} setMovies={setMovies} />
 
                 </section>
 
