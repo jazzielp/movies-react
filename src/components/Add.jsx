@@ -1,4 +1,4 @@
-import { saveToStorage, getFromStorage } from "../helpers/SaveToStorage"
+import { saveToStorage, getFromStorage, addMovie } from "../helpers/SaveToStorage"
 import propTypes from 'prop-types'
 function Add({ setMovies }) {
 
@@ -14,7 +14,8 @@ function Add({ setMovies }) {
             title,
             description
         }
-        saveToStorage('movies', movie)
+        const newMovies = addMovie(movie)
+        saveToStorage('movies', newMovies)
         setMovies(getFromStorage('movies'))
     }
 
@@ -33,7 +34,8 @@ function Add({ setMovies }) {
 }
 
 Add.propTypes = {
-    setMovies: propTypes.func.isRequired
+    setMovies: propTypes.func.isRequired,
+    movies: propTypes.array.isRequired
 }
 
 export default Add
