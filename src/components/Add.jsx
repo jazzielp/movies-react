@@ -21,8 +21,11 @@ function Add({ setMovies }) {
     }
 
     return (
+        <div className="add">
+            <h3 className="title">Añadir pelicula</h3>
+            <Form onSubmit={getDataForm} />
 
-        <Form onSubmit={getDataForm}/>
+        </div>
 
     )
 }
