@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 // import { useState } from 'react'
 import { getFromStorage } from '../helpers/SaveToStorage'
+import Card from './Card'
 function List({ movies, setMovies }) {
     // const [editMovie, setEditMovie] = useState(null)
     const deleteMovie = (id) => {
@@ -18,13 +19,7 @@ function List({ movies, setMovies }) {
                 movies.length === 0
                     ? <p>No hay peliculas</p>
                     : movies.map((movie) => (
-                        <article className="peli-item" key={movie.id}>
-                            <h3 className="title">{movie.title}</h3>
-                            <p className="description">{movie.description}</p>
-
-                            <button className="edit">Editar</button>
-                            <button className="delete" onClick={() => deleteMovie(movie.id)}>Borrar</button>
-                        </article>
+                      <Card key={movie.id} movie={movie} deleteMovie={deleteMovie} />
                     ))
             }
         </>
