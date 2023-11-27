@@ -1,9 +1,13 @@
 import PropTypes from 'prop-types'
-// import { useState } from 'react'
+import { useState } from 'react'
 import { getFromStorage } from '../helpers/SaveToStorage'
 import Card from './Card'
+import Form from './Form'
 function List({ movies, setMovies }) {
-    // const [editMovie, setEditMovie] = useState(null)
+    // State to edit a movie
+    const [editedMovie, setEditedMovie] = useState(1700934487880)
+
+    // Function to delete a movie
     const deleteMovie = (id) => {
         const moviesStorage = getFromStorage('movies')
         const newMovies = moviesStorage.filter((movie) => movie.id !== id)
@@ -11,7 +15,12 @@ function List({ movies, setMovies }) {
         setMovies(newMovies)
     }
 
-
+    // Function to edit a movie
+    const editMovie = (id) => {
+        if (id) {
+            setEditedMovie(id)
+        }
+    }
 
     return (
         <>
@@ -19,8 +28,14 @@ function List({ movies, setMovies }) {
                 movies.length === 0
                     ? <p>No hay peliculas</p>
                     : movies.map((movie) => (
-                      <Card key={movie.id} movie={movie} deleteMovie={deleteMovie} />
+                        <article className="peli-item" key={movie.id}>
+                            { editedMovie === movie.id
+                                ? <Form key={movie.id} movie={movie} />
+                                : <Card key={movie.id} movie={movie} deleteMovie={deleteMovie} editMovie={editMovie} />
+                            }
+                        </article>
                     ))
+
             }
         </>
     )

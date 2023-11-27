@@ -31,8 +31,7 @@ function Add({ setMovies }) {
 }
 
 Add.propTypes = {
-    setMovies: propTypes.func.isRequired,
-    movies: propTypes.array.isRequired
+    setMovies: propTypes.func.isRequired
 }
 
 export default Add
